@@ -7,6 +7,11 @@ defineProps({
     default: false,
   },
 })
+
+const routeList = [
+  { name: 'Dashboard', path: '/dashboard' },
+
+]
 </script>
 
 <template>
@@ -22,12 +27,12 @@ defineProps({
       <h2 class="font-bold text-sm mt-2 text-gray-600">User Name</h2>
     </div>
     <div id="menu" class="flex flex-col gap-2">
-      <RouterLink to="/" class="hover:bg-main py-3 px-8 text-gray-600 hover:text-white">Home</RouterLink>
-      <RouterLink to="/about" class="hover:bg-main py-3 px-8 text-gray-600 hover:text-white"
-        >About</RouterLink
-      >
-      <RouterLink to="/dashboard" class="hover:bg-main py-3 px-8 text-gray-600 hover:text-white"
-        >Dashboard</RouterLink
+      <RouterLink
+        v-for="route in routeList"
+        :key="route.name"
+        :to="route.path"
+        class="hover:bg-main py-3 px-8 text-gray-600 hover:text-white"
+        >{{ route.name }}</RouterLink
       >
     </div>
     <div
